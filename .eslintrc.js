@@ -15,6 +15,7 @@ module.exports = {
     'max-len': [2, 120, 4],
     'no-invalid-this': 'off',
     'no-extra-bind': 'off',
+    'new-cap': [2, { capIsNew: false }],
   },
   ignorePatterns: ['**/widget/app', '**/plugin/targets', 'node_modules'],
 };

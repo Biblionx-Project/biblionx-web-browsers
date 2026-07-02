@@ -1,5 +1,5 @@
 const noUiSlider = require('nouislider');
-require('nouislider/distribute/nouislider.min.css');
+require('nouislider/dist/nouislider.css');
 
 const controlsTpl = require('./controls.html').default;
 require('./controls.scss');
