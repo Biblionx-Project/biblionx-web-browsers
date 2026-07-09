@@ -1,10 +1,4 @@
 <div align="center">
-  <img
-    alt="Banner con los avatares de VLibras (Hosana, Ícaro y Guga)"
-    width="400"
-    src="/uploads/2078a32902a7a2073027c734e34bbeb0/banner.png"
-  />
-
 # VLibras Web (Plugins y Widget)
 
 Los Plugins y el Widget de VLibras Web son extensiones para navegadores web y páginas HTML.
@@ -12,7 +6,6 @@ Los Plugins y el Widget de VLibras Web son extensiones para navegadores web y p�
 ![Versión](https://img.shields.io/badge/version-v6.0.0-blue.svg)
 ![Plataforma](https://img.shields.io/badge/platform-chrome%20%7C%20firefox%20%7C%20safari-lightgrey)
 ![Licencia](https://img.shields.io/badge/license-LGPLv3-blue.svg)
-![VLibras](https://img.shields.io/badge/vlibras%20suite-2023-green.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAUCAYAAAC9BQwsAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4wIHCiw3NwjjIgAAAQ9JREFUOMuNkjErhWEYhq/nOBmkDNLJaFGyyyYsZzIZKJwfcH6AhcFqtCvFDzD5CQaTFINSlJJBZHI6J5flU5/P937fube357m63+d+nqBEagNYA9pAExgABxHxktU3882hjqtd9d7/+lCPsvp DZNA+MAXsABNU6xHYQ912ON2qC2qQ/X+J4XQXEVe/jwawCzwNAZp/NCLiDVgHejXgKIkVdGpm/FKXU/BJDfytbpWBLfWzAjxVx1Kuxwno5k84Jex0IpyzdN46qfYSjq18bzMHzQHXudifgQtgBuhHxGvKbaPg0Klaan7GdqE2W39LOq8OCo6X6kgdeJ4IZKUKWq1Y+GHVjF3gveTIe8BiCvwBEZmRAXuH6mYAAAAASUVORK5CYII=)
 
 </div>
 
