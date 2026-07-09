@@ -1,8 +1,9 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
 const webpack = require('webpack-stream');
-const mergeStream = require('merge-stream');
 const webpackConfig = require('./webpack.config.js');
+const fs = require('fs');
+const path = require('path');
 
 const options = {
   dest: {
@@ -24,24 +25,30 @@ function build(target, {
   const pluginOptions = { cwd: 'plugin', base: 'plugin' };
   const targetOptions = { cwd: target, base: target };
 
-  const playerSrc = gulp.src(player).pipe(gulp.dest(`${destPath}/target`));
-  const scriptSrc = gulp.src(script).pipe(webpack(webpackCfg)).pipe(gulp.dest(destPath));
-  const templateSrc = gulp.src(template).pipe(gulp.dest(destPath));
+  const promises = [];
 
-  const assetsPluginSrc = gulp.src(['assets/*', '!assets/icons/**'], pluginOptions).pipe(gulp.dest(destPath));
-  const assetsTargetSrc = gulp.src(['assets/*', '!assets/icons/**'], targetOptions).pipe(gulp.dest(destPath));
-  const fontsPluginSrc = gulp.src('assets/fonts/*', pluginOptions).pipe(gulp.dest(destPath));
-  const fontsTargetSrc = gulp.src('assets/fonts/*', targetOptions).pipe(gulp.dest(destPath));
+  const runStream = (stream) => {
+    return new Promise((resolve, reject) => {
+      stream.on('finish', resolve);
+      stream.on('end', resolve);
+      stream.on('error', reject);
+    });
+  };
 
-  return mergeStream(
-    playerSrc,
-    scriptSrc,
-    templateSrc,
-    assetsPluginSrc,
-    assetsTargetSrc,
-    fontsPluginSrc,
-    fontsTargetSrc
-  );
+  promises.push(runStream(gulp.src(player).pipe(gulp.dest(`${destPath}/target`))));
+  promises.push(runStream(gulp.src(script).pipe(webpack(webpackCfg)).pipe(gulp.dest(destPath))));
+  promises.push(runStream(gulp.src(template).pipe(gulp.dest(destPath))));
+  promises.push(runStream(gulp.src(['assets/*', '!assets/icons/**'], pluginOptions).pipe(gulp.dest(destPath))));
+  promises.push(runStream(gulp.src('assets/fonts/*', pluginOptions).pipe(gulp.dest(destPath))));
+
+  if (fs.existsSync(path.join(target, 'assets'))) {
+    promises.push(runStream(gulp.src(['assets/*', '!assets/icons/**'], targetOptions).pipe(gulp.dest(destPath))));
+  }
+  if (fs.existsSync(path.join(target, 'assets/fonts'))) {
+    promises.push(runStream(gulp.src('assets/fonts/*', targetOptions).pipe(gulp.dest(destPath))));
+  }
+
+  return Promise.all(promises);
 }
 
 gulp.task('build:chrome', () => build('chrome'));

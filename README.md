@@ -181,7 +181,7 @@ new window.VLibras.Widget({
 VLibras ya cuenta con versiones oficiales de los plugins en las tiendas de extensiones de Chrome y Firefox.
 Para usar la versión de los plugins compilada en su máquina, consulte las instrucciones de instalación de extensiones en la página oficial de su navegador.
 
-## Modernización de Dependencias (Pasada Iteración)
+## Modernización de Dependencias
 
 En la última iteración, el proyecto pasó por un proceso de modernización para alinearse con los estándares actuales de desarrollo:
 - **Migración de SASS**: Se reemplazó el paquete deprecado `node-sass` por la implementación oficial moderna `sass` (Dart Sass), lo que mejora la compatibilidad y estabilidad en la compilación de estilos.
