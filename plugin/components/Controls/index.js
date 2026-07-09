@@ -102,7 +102,7 @@ Controls.prototype.load = function (element, rateBox) {
   playBtn.querySelector('.vpw-component-pause').innerHTML = controlIcons.pause;
   playBtn.querySelector('.vpw-component-restart').innerHTML = controlIcons.restart;
   fullscreenBtn.innerHTML = controlIcons.maximize + controlIcons.minimize;
-  skipAnimationBtn.innerHTML = controlIcons.skip + '<span>Pular</span>';
+  skipAnimationBtn.innerHTML = controlIcons.skip + '<span>Omitir</span>';
   subtitlesBtn.innerHTML = controlIcons.subtitle;
 
   if (!this.isWidget) fullscreenBtn.style.display = 'none';
@@ -175,7 +175,7 @@ Controls.prototype.load = function (element, rateBox) {
   this.player.on('stop:welcome', function () {
     if (welcomeFinished) return;
     removeClass(skipAnimationBtn, 'vp-enabled');
-    this.setLabel('Clique em um texto para traduzi-lo.');
+    this.setLabel('Haz clic en un texto para traducirlo.');
     welcomeFinished = true;
   }.bind(this));
 

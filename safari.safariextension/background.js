@@ -12,7 +12,7 @@ safari.application.addEventListener('contextmenu', function(event) {
   }
 
   if (selectedText !== '') {
-    event.contextMenu.appendContextMenuItem('translateLibras', 'Traduzir ' + selectedText + ' para LIBRAS');
+    event.contextMenu.appendContextMenuItem('translateLibras', 'Traducir ' + selectedText + ' a LIBRAS');
   }
 }, false);
 

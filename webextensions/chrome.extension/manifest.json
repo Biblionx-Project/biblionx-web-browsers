@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "VLibras",
   "version": "6.0.1",
-  "description": "Um tradutor de Português para Libras",
+  "description": "Un traductor de Portugués a Libras",
   "homepage_url": "http://vlibras.lavid.ufpb.br/",
   "icons": {
     "16": "icons/vlibras16.png",

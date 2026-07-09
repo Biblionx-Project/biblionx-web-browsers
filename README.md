@@ -1,51 +1,54 @@
 <div align="center">
   <a href="https://www.vlibras.gov.br/">
     <img
-      alt="Banner with VLibras avatars (Hosana, Ícaro and Guga)"
+      alt="Banner con los avatares de VLibras (Hosana, Ícaro y Guga)"
       width="400"
       src="/uploads/2078a32902a7a2073027c734e34bbeb0/banner.png"
     />
   </a>
 
-# VLibras Web (Plugins and Widget)
+# VLibras Web (Plugins y Widget)
 
-VLibras Web Plugins and Widget are extensions for web browsers and HTML pages.
+Los Plugins y el Widget de VLibras Web son extensiones para navegadores web y páginas HTML.
 
-![Version](https://img.shields.io/badge/version-v6.0.0-blue.svg)
-![Platform](https://img.shields.io/badge/platform-chrome%20%7C%20firefox%20%7C%20safari-lightgrey)
-![License](https://img.shields.io/badge/license-LGPLv3-blue.svg)
-![VLibras](https://img.shields.io/badge/vlibras%20suite-2023-green.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAUCAYAAAC9BQwsAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4wIHCiw3NwjjIgAAAQ9JREFUOMuNkjErhWEYhq/nOBmkDNLJaFGyyyYsZzIZKJwfcH6AhcFqtCvFDzD5CQaTFINSlJJBZHI6J5flU5/P937fube357m63+d+nqBEagNYA9pAExgABxHxktU3882hjqtd9d7/+lCPsvpDZNA+MAXsABNU6xHYQ912ON2qC2qQ/X+J4XQXEVe/jwawCzwNAZp/NCLiDVgHejXgKIkVdGpm/FKXU/BJDfytbpWBLfWzAjxVx1Kuxwno5k84Jex0IpyzdN46qfYSjq18bzMHzQHXudifgQtgBuhHxGvKbaPg0Klaan7GdqE2W39LOq8OCo6X6kgdeJ4IZKUKWq1Y+GHVjF3gveTIe8BiCvwBEZmRAXuH6mYAAAAASUVORK5CYII=)
+![Versión](https://img.shields.io/badge/version-v6.0.0-blue.svg)
+![Plataforma](https://img.shields.io/badge/platform-chrome%20%7C%20firefox%20%7C%20safari-lightgrey)
+![Licencia](https://img.shields.io/badge/license-LGPLv3-blue.svg)
+![VLibras](https://img.shields.io/badge/vlibras%20suite-2023-green.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAUCAYAAAC9BQwsAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4wIHCiw3NwjjIgAAAQ9JREFUOMuNkjErhWEYhq/nOBmkDNLJaFGyyyYsZzIZKJwfcH6AhcFqtCvFDzD5CQaTFINSlJJBZHI6J5flU5/P937fube357m63+d+nqBEagNYA9pAExgABxHxktU3882hjqtd9d7/+lCPsvp DZNA+MAXsABNU6xHYQ912ON2qC2qQ/X+J4XQXEVe/jwawCzwNAZp/NCLiDVgHejXgKIkVdGpm/FKXU/BJDfytbpWBLfWzAjxVx1Kuxwno5k84Jex0IpyzdN46qfYSjq18bzMHzQHXudifgQtgBuhHxGvKbaPg0Klaan7GdqE2W39LOq8OCo6X6kgdeJ4IZKUKWq1Y+GHVjF3gveTIe8BiCvwBEZmRAXuH6mYAAAAASUVORK5CYII=)
 
 </div>
 
-## Table of Contents
+## Tabla de Contenidos
 
-- [Getting Started](#getting-started)
-  - [System Requirements](#system-requirements)
-  - [Prerequisites](#prerequisites)
-  - [Installing](#installing)
-- [Compilation](#building)
-  - [Building the Widget](#building-the-widget)
-  - [Building the Plugins](#building-the-plugins)
-- [Installation](#installation)
-  - [Installing the Widget](#installing-the-widget)
-  - [Installing the Plugins](#installing-the-plugins)
-- [Contributors](#contributors)
-- [License](#license)
+- [Primeros Pasos](#primeros-pasos)
+  - [Requisitos del Sistema](#requisitos-del-sistema)
+  - [Prerrequisitos](#prerrequisitos)
+  - [Instalación](#instalacion)
+- [Compilación](#compilacion)
+  - [Compilar el Widget](#compilar-el-widget)
+  - [Compilar los Plugins](#compilar-los-plugins)
+- [Instalación en Producción / Uso](#instalacion-en-produccion-uso)
+  - [Instalar el Widget](#instalar-el-widget)
+  - [Instalar los Plugins](#instalar-los-plugins)
+- [Modernización de Dependencias (Pasada Iteración)](#modernizacion-de-dependencias-pasada-iteracion)
+- [Colaboradores](#colaboradores)
+- [Licencia](#licencia)
 
-## Getting Started
+## Primeros Pasos
 
-These instructions will get you a copy of the project compiled and running on your local machine for development and testing purposes.
+Estas instrucciones le permitirán obtener una copia del proyecto compilada y ejecutándose en su máquina local para fines de desarrollo y pruebas.
 
-### System Requirements
+### Requisitos del Sistema
 
-* OS: Ubuntu 18.04.2 LTS (Bionic Beaver) or Later
+* SO: Ubuntu 18.04.2 LTS (Bionic Beaver) o superior, o sistemas Windows/macOS compatibles.
 
-### Prerequisites
+### Prerrequisitos
 
-Before starting the build of the tools, you need to install some prerequisites:
+Antes de comenzar la compilación de las herramientas, debe instalar algunos prerrequisitos:
 
-[Node.js](https://nodejs.org/en/)
+[Node.js](https://nodejs.org/es/)
+
+En sistemas basados en Debian/Ubuntu:
 
 ```sh
 curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
@@ -58,26 +61,26 @@ sudo apt install -y nodejs
 
 [VLibras Player WebJS](https://gitlab.lavid.ufpb.br/vlibras2019/vlibras-player-webjs)
 
-VLibras Player WebJS is required at project installation, you just need to clone it in the same path as the root of this project.
+VLibras Player WebJS es requerido durante la instalación del proyecto; solo necesita clonarlo en la misma ruta que la raíz de este proyecto.
 
 ```sh
 git clone https://gitlab.lavid.ufpb.br/vlibras2019/vlibras-web-extensions/vlibras-player-webjs.git
 ```
 
-> Note: It is necessary to have access to the VLibras Player WebJS repository to be able to clone it.
+> Nota: Es necesario tener acceso al repositorio de VLibras Player WebJS para poder clonarlo.
 
-### Configuration
+### Configuración
 
-Before running the application, make sure to create a `.env` file in the project root and set the following environment variable:
+Antes de ejecutar la aplicación, asegúrese de crear un archivo `.env` en la raíz del proyecto y definir la siguiente variable de entorno:
 
 ```dotenv
-# Content of .env (set to "production", "homolog" or "development")
+# Contenido de .env (definir como "production", "homolog" o "development")
 MODE=development
 ```
 
-### Installing
+### Instalación
 
-After installing all the prerequisites, install the project by running the command:
+Después de instalar todos los prerrequisitos, instale las dependencias del proyecto ejecutando el comando:
 
 ```sh
 cd vlibras-web-browsers/
@@ -87,52 +90,52 @@ cd vlibras-web-browsers/
 npm install
 ```
 
-## Building
+## Compilación
 
-When the installation is complete, you can now build the Plugins and Widget.
+Una vez completada la instalación, puede proceder a compilar los Plugins y el Widget.
 
-### Building the Widget
+### Compilar el Widget
 
 ```sh
 npm run gulp build:widget
 ```
 
-The compiled file can be found in the `widget/app/` folder. Go to the [Widget installation section](#installing-the-widget) for installation instructions.
+El archivo compilado se puede encontrar en la carpeta `widget/app/`. Diríjase a la [sección de instalación del Widget](#instalar-el-widget) para ver las instrucciones de instalación.
 
-### Building the Plugins
+### Compilar los Plugins
 
-Before building, you must set `$is-widget` to `0` in `plugin/scss/_variables.scss`:
+Antes de compilar, debe establecer `$is-widget` en `0` en `plugin/scss/_variables.scss`:
 
 ```scss
 $is-widget: 0;
 ```
 
-To build the plugin you have two different options of building, according to the target browser you wish to build to:
+Para compilar el plugin, tiene dos opciones diferentes según el navegador de destino:
 
-- Firefox/Chrome - the compiled files can be found in the `webextensions` folder.
+- Firefox/Chrome - los archivos compilados se pueden encontrar en la carpeta `webextensions`.
 
 ```sh
 npm run gulp build:webextensions
 ```
 
-- Safari - the compiled files can be found in the `safari.safariextension` folder.
+- Safari - los archivos compilados se pueden encontrar en la carpeta `safari.safariextension`.
 
 ```sh
 npm run gulp build:safari
 ```
 
-> Note: You can also generate all the builds to all targets at once by running the command: `npm run gulp build`
+> Nota: También puede generar todas las compilaciones para todos los destinos a la vez ejecutando el comando: `npm run gulp build`
 
-## Installation
+## Instalación en Producción / Uso
 
-### Installing the Widget
+### Instalar el Widget
 
-The Widget can be installed on your website by inserting a few snippets of code before closing the `<body>` tag of a HTML page:
+El Widget se puede instalar en su sitio web insertando unos pocos fragmentos de código antes de cerrar la etiqueta `<body>` de una página HTML:
 
 ```html
-<body> <!-- Begin of the page body -->
+<body> <!-- Inicio del cuerpo de la página -->
 
-  ... <!-- Content of the page -->
+  ... <!-- Contenido de la página -->
 
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
@@ -140,29 +143,28 @@ The Widget can be installed on your website by inserting a few snippets of code 
       <div class="vw-plugin-top-wrapper"></div>
     </div>
   </div>
-  <script src="<your-directory-path>/app/vlibras-plugin.js"></script>
+  <script src="<su-ruta-de-directorio>/app/vlibras-plugin.js"></script>
   <script>
     new window.VLibras.Widget();
   </script>
-</body> <!-- End of the page body -->
+</body> <!-- Fin del cuerpo de la página -->
 ```
 
-> Note: The app folder can be copied to any directory, remember to enter the correct path for it.
+> Nota: La carpeta `app` se puede copiar a cualquier directorio, recuerde ingresar la ruta correcta hacia ella.
 
-#### Default Values Configuration
+#### Configuración de Valores por Defecto
 
-When using the Widget, you can customize various aspects such as personalization, opacity, position, and avatar. Below are the available parameters:
+Al usar el Widget, puede personalizar varios aspectos como la opacidad, posición y el avatar inicial. A continuación se presentan los parámetros disponibles:
 
-
-| Parameter         | Default Value                    | Description  |
+| Parámetro         | Valor por Defecto                | Descripción  |
 | ----------------- | -------------------------------- | ------------ |
-| `rootPath`        | `"https://vlibras.gov.br/app/"`  | The base path for resources used by the Widget. Can be configured to point to a specific directory. In development, use your local path. |
-| `personalization` | `null`                           | Specifies a valid JSON URL for custom avatar configurations. |
-| `opacity`         | `1`                              | Controls the background opacity of the Widget. A value between 0 (completely transparent) and 1 (completely opaque). |
-| `position`        | `"R"`                            | Sets the initial position of the Widget on the page. The valid values are: "TL" (top-left), "T" (top), "TR" (top-right), "R" (right), "BR" (bottom-right), "B" (bottom), "BL" (bottom-left), and "L" (left). |
-| `avatar`          | `"icaro"`                        | Define the initial VLibras avatar. The available avatars are: "icaro", "hosana" and "guga". You can also use "random". |
+| `rootPath`        | `"https://vlibras.gov.br/app/"`  | La ruta base para los recursos utilizados por el Widget. Puede configurarse para apuntar a un directorio específico. En desarrollo, use su ruta local. |
+| `personalization` | `null`                           | Especifica una URL JSON válida para configuraciones personalizadas de avatar. |
+| `opacity`         | `1`                              | Controla la opacidad de fondo del Widget. Un valor entre 0 (completamente transparente) y 1 (completamente opaco). |
+| `position`        | `"R"`                            | Establece la posición inicial del Widget en la página. Los valores válidos son: "TL" (arriba-izquierda), "T" (arriba), "TR" (arriba-derecha), "R" (derecha), "BR" (abajo-derecha), "B" (abajo), "BL" (abajo-izquierda) y "L" (izquierda). |
+| `avatar`          | `"icaro"`                        | Define el avatar inicial de VLibras. Los avatares disponibles son: "icaro", "hosana" y "guga". También puede usar "random". |
 
-Usage example: 
+Ejemplo de uso:
 
 ```javascript
 new window.VLibras.Widget({
@@ -174,18 +176,25 @@ new window.VLibras.Widget({
 });
 ```
 
-### Installing the Plugins
+### Instalar los Plugins
 
-VLibras already has official versions of the plugins in the Chrome and Firefox extensions store.
-To use the version of the plugins built in your machine, see the extensions installation instructions on your browser's official page.
+VLibras ya cuenta con versiones oficiales de los plugins en las tiendas de extensiones de Chrome y Firefox.
+Para usar la versión de los plugins compilada en su máquina, consulte las instrucciones de instalación de extensiones en la página oficial de su navegador.
 
-## Contributors
+## Modernización de Dependencias (Pasada Iteración)
+
+En la última iteración, el proyecto pasó por un proceso de modernización para alinearse con los estándares actuales de desarrollo:
+- **Migración de SASS**: Se reemplazó el paquete deprecado `node-sass` por la implementación oficial moderna `sass` (Dart Sass), lo que mejora la compatibilidad y estabilidad en la compilación de estilos.
+- **Soporte Multiplataforma**: Se integró `cross-env` en los scripts de ejecución de `npm` para asegurar el correcto establecimiento de variables de entorno (como `MODE`) tanto en sistemas Unix como en Windows.
+- **Actualización de Dependencias**: Se actualizaron paquetes clave como `nouislider` (de v8 a v15.8.1), `trie-search` (de v1 a v2.2.1), `webpack` a v5.97.1, y los loaders de estilos/sass correspondientes.
+
+## Colaboradores
 
 * Diêgo Ferreira - <diego.raian@lavid.ufpb.br>
 * Mateus Pires - <mateuspires@lavid.ufpb.br>
 * Suanny Fabyne - <suanny@lavid.ufpb.br>
 * Thiago Filipe - <thiago.filipe@lavid.ufpb.br>
 
-## License
+## Licencia
 
-This project is licensed under the LGPLv3 License - see the [LICENSE](LICENSE) file for details.
+Este proyecto está bajo la Licencia LGPLv3 - ver el archivo [LICENSE](LICENSE) para más detalles.

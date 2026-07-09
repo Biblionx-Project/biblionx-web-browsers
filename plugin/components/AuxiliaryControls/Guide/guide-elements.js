@@ -1,32 +1,32 @@
 export const guideElements = [
   {
     path: 'div[vp-box]',
-    text: `Clique nos botões do cabeçalho para acessar as Configurações, 
-    pesquisar sinais no Dicionário ou saber mais sobre o VLibras.`,
+    text: `Haz clic en los botones del encabezado para acceder a la Configuración, 
+    buscar señas en el Diccionario o saber más sobre VLibras.`,
     gloss:
       'CLIQUE BOTÃO CABEÇALHO ACESSAR CONFIGURAÇÃO PESQUISAR SINAL ' +
       'DICIONÁRIO OU SABER MAIS&QUANTIDADE SOBRE&ASSUNTO VLIBRAS [PONTO]',
   },
   {
     path: 'div[vp-change-avatar]',
-    text: `Clique neste botão para alterar o avatar. 
-    Você pode escolher entre Ícaro, Guga e Hosana.`,
+    text: `Haz clic en este botón para cambiar el avatar. 
+    Puedes elegir entre Ícaro, Guga y Hosana.`,
     gloss:
       'CLIQUE BOTÃO ALTERAR AVATAR [PONTO] VOCÊ PODER&POSSIBILIDADE ESCOLHER ENTRE ' +
       '[WLCM]ICARO_SINAL [WLCM]GUGA_SINAL [WLCM]HOZANA_SINAL',
   },
   {
     path: '.vpw-more-options-button',
-    text: `Acesse opções extras da ferramenta.
-    Clique neste botão para acessar o Tradutor ou alterar a emoção do avatar.`,
+    text: `Accede a opciones extras de la herramienta.
+    Haz clic en este botón para acceder al Traductor o cambiar la emoción del avatar.`,
     gloss:
       'ACESSAR OPÇÃO EXTRA VLIBRAS ' +
       'CLIQUE BOTÃO ACESSAR TRADUTOR VLIBRAS ALTERAR EMOÇÃO AVATAR [PONTO]',
   },
   {
     path: 'div[vp-controls]',
-    text: `Clique nos botões de controle para pausar ou retomar animação, 
-    ajustar velocidade, ativar legendas e abrir o avatar em tela cheia.`,
+    text: `Haz clic en los botones de control para pausar o reanudar la animación, 
+    ajustar la velocidad, activar subtítulos y abrir el avatar en pantalla completa.`,
     gloss:
       'CLIQUE BOTÃO CONTROLE PARAR&HÁBITO OU RETOMAR ANIMAR AJUSTAR VELOCIDADE ' +
       'ATIVAR LEGENDA ABRIR&AFASTAR AVATAR TELA CHEIA&CAPACIDADE [PONTO]',

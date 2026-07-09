@@ -174,7 +174,7 @@ Settings.prototype.load = function (element) {
   function toggleHeader() {
     header.innerHTML = panelIsOpen()
       ? 'Regionalismo'
-      : 'Configurações';
+      : 'Configuración';
   }
 
 };

@@ -38,7 +38,7 @@ chrome.storage.local.get('popupId', ({ popupId: stored }) => {
 chrome.contextMenus.create(
   {
     id: 'translate_contextmenu',
-    title: "Traduzir '%s' para Libras",
+    title: "Traducir '%s' a Libras",
     contexts: ['selection'],
   },
   () => {

@@ -187,7 +187,7 @@ Dictionary.prototype.load = function (element, closeScreen, initGuide) {
       const isEmpty = this.list.childNodes.length === 0;
 
       this.list.parentElement.classList.toggle('vp-isEmpty', isEmpty);
-      this.message.innerHTML = `Sem resultados para <strong>"${event.target.value}"</strong>`;
+      this.message.innerHTML = `Sin resultados para <strong>"${event.target.value}"</strong>`;
 
       toggleWords('dict');
     }.bind(this)
