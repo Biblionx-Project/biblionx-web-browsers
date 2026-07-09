@@ -31,7 +31,7 @@ Estas instrucciones le permitirán obtener una copia del proyecto compilada y ej
 
 ### Requisitos del Sistema
 
-* SO: Ubuntu 18.04.2 LTS (Bionic Beaver) o superior, o sistemas Windows/macOS compatibles.
+* SO: Ubuntu 26.04 LTS o superior, o sistemas Windows/macOS compatibles.
 
 ### Prerrequisitos
 
