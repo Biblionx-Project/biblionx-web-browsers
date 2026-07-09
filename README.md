@@ -1,11 +1,9 @@
 <div align="center">
-  <a href="https://www.vlibras.gov.br/">
-    <img
-      alt="Banner con los avatares de VLibras (Hosana, Ícaro y Guga)"
-      width="400"
-      src="/uploads/2078a32902a7a2073027c734e34bbeb0/banner.png"
-    />
-  </a>
+  <img
+    alt="Banner con los avatares de VLibras (Hosana, Ícaro y Guga)"
+    width="400"
+    src="/uploads/2078a32902a7a2073027c734e34bbeb0/banner.png"
+  />
 
 # VLibras Web (Plugins y Widget)
 
