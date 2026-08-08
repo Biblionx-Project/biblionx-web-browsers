@@ -75,8 +75,8 @@ MODE=development
 
 Después de instalar todos los prerrequisitos, instale las dependencias del proyecto ejecutando el comando:
 
-```sh
-cd vlibras-web-browsers/
+```bash
+cd biblionx-web-browsers/
 ```
 
 ```sh
