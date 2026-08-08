@@ -1,8 +1,8 @@
 export const ALERT_MESSAGES = {
-  COMPATIBILITY_ERROR: "Su computadora no soporta WebGL. Por favor, actualice los controladores de video.",
-  TRANSLATION_ERROR: "No fue posible establecer conexión con el servicio de traducción de VLibras.",
-  INTERNAL_ERROR: "¡Ops! Ocurrió un problema, por favor póngase en contacto con nosotros.",
-  TIMEOUT_ERROR: "Tiempo de solicitud excedido.",
-  REVIEW_THANKS: "¡Agradecemos su contribución!",
-  TRANSLATING_TEXT: 'Traduciendo...'
+  COMPATIBILITY_ERROR: "Your computer doesn't support WebGL. Please update your video drivers.",
+  TRANSLATION_ERROR: "Could not connect to the VLibras translation service.",
+  INTERNAL_ERROR: "Oops! Something went wrong, please contact us.",
+  TIMEOUT_ERROR: "Request timed out.",
+  REVIEW_THANKS: "Thanks for your feedback!",
+  TRANSLATING_TEXT: 'Translating...'
 };
