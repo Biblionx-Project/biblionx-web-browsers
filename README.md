@@ -183,10 +183,7 @@ In the latest iteration, the project went through a modernization process to ali
 
 ## Contributors
 
-* Diêgo Ferreira - <diego.raian@lavid.ufpb.br>
-* Mateus Pires - <mateuspires@lavid.ufpb.br>
-* Suanny Fabyne - <suanny@lavid.ufpb.br>
-* Thiago Filipe - <thiago.filipe@lavid.ufpb.br>
+Originally developed by the Biblionx team.
 
 ## License
 
