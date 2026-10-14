@@ -29,6 +29,11 @@ http.createServer(function(req, res) {
     '.svg': 'image/svg+xml',
     '.pdf': 'application/pdf',
     '.doc': 'application/msword',
+    '.wasm': 'application/wasm',
+    '.unityweb': 'application/octet-stream',
+    '.woff': 'font/woff',
+    '.woff2': 'font/woff2',
+    '.ttf': 'font/ttf',
   };
 
   fs.exists(pathname, function(exist) {

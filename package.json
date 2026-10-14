@@ -1,5 +1,5 @@
 {
-  "name": "vlibras-plugin",
+  "name": "biblionx-plugin",
   "version": "6.0.0",
   "scripts": {
     "test": "cross-env MODE=development gulp run:widget",
@@ -16,7 +16,7 @@
     "textarea-caret": "^3.1.0",
     "trie-search": "^2.2.1",
     "url-join": "^4.0.1",
-    "vlibras": "file:../vlibras-player-webjs"
+    "vlibras": "file:../biblionx-player-webjs"
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",

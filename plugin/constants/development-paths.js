@@ -1,7 +1,7 @@
 module.exports = {
-  ROOT_PATH: '../../widget/app/',
-  
-  DICTIONARY_URL: 'https://dicionario2-dth.lavid.ufpb.br/signs?version=2018.3.1',
-  REVIEW_URL: 'https://traducao2-dth.vlibras.lavid.ufpb.br/dl/review',
-  SIGNS_URL: 'https://dicionario2-dth.vlibras.gov.br/bundles',
+  ROOT_PATH: process.env.ROOT_PATH || '../../widget/app/',
+
+  DICTIONARY_URL: process.env.DICTIONARY_URL || 'http://localhost:8000/api/v1/words',
+  REVIEW_URL: process.env.REVIEW_URL || 'http://localhost:8000/api/v1/review',
+  SIGNS_URL: process.env.SIGNS_URL || 'http://localhost:8000/extracted_images',
 };

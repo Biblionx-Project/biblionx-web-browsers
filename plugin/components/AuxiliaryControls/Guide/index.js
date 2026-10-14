@@ -119,7 +119,8 @@ Guide.prototype.reset = function () {
 };
 
 Guide.prototype.updatePosition = function () {
-  const position = window.plugin.position;
+  const position = window.plugin ? window.plugin.position : '';
+  const isWidget = Boolean(window.plugin && window.plugin.isWidget);
   const isLeft = isWidget ? position.includes('L') : true;
   const item = this.$elements[this.tab];
   const { top: wTop, width: wWidth, height: wHeight } = u.getRect($vw);

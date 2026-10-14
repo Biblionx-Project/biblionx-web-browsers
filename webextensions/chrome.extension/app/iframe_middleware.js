@@ -1,10 +1,15 @@
 window.addEventListener('load', function () {
   const iframe = document.querySelector('iframe');
+  const runtime =
+    typeof browser !== 'undefined' && browser.runtime
+      ? browser.runtime
+      : chrome.runtime;
 
-  chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-      if (request.selectedText === undefined) return;
+  runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    if (!request || request.selectedText === undefined) return;
+    if (iframe && iframe.contentWindow) {
       iframe.contentWindow.postMessage(request.selectedText, '*');
-    });
-  chrome.runtime.sendMessage({ ready: true });
+    }
+  });
+  runtime.sendMessage({ ready: true });
 });

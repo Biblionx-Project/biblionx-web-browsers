@@ -1,7 +1,7 @@
 module.exports = {
-  ROOT_PATH: 'https://www.vlibras.gov.br/app/',
+  ROOT_PATH: process.env.ROOT_PATH || 'https://api.biblionx.org/app/',
 
-  DICTIONARY_URL: 'https://dicionario2.vlibras.gov.br/signs?version=2018.3.1',
-  REVIEW_URL: 'https://traducao2.vlibras.gov.br/review',
-  SIGNS_URL: 'https://dicionario2.vlibras.gov.br/bundles',
+  DICTIONARY_URL: process.env.DICTIONARY_URL || 'https://api.biblionx.org/api/v1/words',
+  REVIEW_URL: process.env.REVIEW_URL || 'https://api.biblionx.org/api/v1/review',
+  SIGNS_URL: process.env.SIGNS_URL || 'https://api.biblionx.org/extracted_images',
 };

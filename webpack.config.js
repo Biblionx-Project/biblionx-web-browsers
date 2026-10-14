@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const mode = process.env.MODE;
+const mode = process.env.BIBLIONX_MODE || process.env.MODE || 'production';
 const path = require('path');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');

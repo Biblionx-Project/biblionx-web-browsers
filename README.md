@@ -68,6 +68,7 @@ Before running the application, make sure to create a `.env` file at the project
 
 ```dotenv
 # .env content (set to "production", "homolog", or "development")
+BIBLIONX_MODE=development
 MODE=development
 ```
 
@@ -181,10 +182,10 @@ In the latest iteration, the project went through a modernization process to ali
 - **Cross-Platform Support**: `cross-env` was integrated into the `npm` run scripts to ensure environment variables (such as `MODE`) are correctly set on both Unix and Windows systems.
 - **Dependency Updates**: Key packages were updated, including `nouislider` (from v8 to v15.8.1), `trie-search` (from v1 to v2.2.1), `webpack` to v5.97.1, and the corresponding style/sass loaders.
 
-## Contributors
+## Contributors & Attribution
 
-Originally developed by the Biblionx team.
+Originally developed by the VLibras team (Laboratório de Aplicações de Vídeo Digital - LAVID / UFPB and Brazilian Ministry of Planning/Management). Adapted, modernized, and maintained as an architectural reference for Dominican Sign Language (LSRD) by the Biblionx team (UNICDA thesis project).
 
 ## License
 
-This project is licensed under the LGPLv3 License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the LGPLv3 License - see the [LICENSE](LICENSE) file for details. Derived from the open-source VLibras project, maintaining full compliance with the GNU Lesser General Public License v3.0.

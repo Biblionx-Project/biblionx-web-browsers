@@ -30,6 +30,9 @@ AccessButton.prototype.load = function (element, vw) {
     const { Plugin } = await import('../../../../plugin/');
     const { loadTextCaptureScript } = await import('./text-capture');
 
+    window.Biblionx = window.Biblionx || {};
+    window.Biblionx.Plugin = Plugin;
+    window.VLibras = window.VLibras || window.Biblionx;
     window.VLibras.Plugin = Plugin;
 
     const config = {
@@ -43,7 +46,8 @@ AccessButton.prototype.load = function (element, vw) {
       avatar: this.avatar,
     };
 
-    if (!window.plugin) window.plugin = new window.VLibras.Plugin(config);
+    const PluginConstructor = window.Biblionx?.Plugin || window.VLibras?.Plugin || Plugin;
+    if (!window.plugin) window.plugin = new PluginConstructor(config);
 
     if (this.ready) {
       loadTextCaptureScript();

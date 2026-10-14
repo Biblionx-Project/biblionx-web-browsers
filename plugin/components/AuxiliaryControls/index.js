@@ -85,7 +85,7 @@ AuxiliaryControls.prototype.hide = function () {
 };
 
 function applyShaker() {
-  const mainScreenGuide = $('[vp-main-guide-screen');
+  const mainScreenGuide = $('[vp-main-guide-screen]');
   const has = hasClass(mainScreenGuide, 'vp-enabled');
   toggleClass(mainScreenGuide, 'vp--shaker', has);
   setTimeout(() => removeClass(mainScreenGuide, 'vp--shaker'), 500);

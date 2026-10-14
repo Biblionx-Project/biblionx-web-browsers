@@ -2,7 +2,7 @@ export const guideElements = [
   {
     path: 'div[vp-box]',
     text: `Haz clic en los botones del encabezado para acceder a la Configuración, 
-    buscar señas en el Diccionario o saber más sobre VLibras.`,
+    buscar señas en el Diccionario o saber más sobre Biblionx.`,
     gloss:
       'CLIQUE BOTÃO CABEÇALHO ACESSAR CONFIGURAÇÃO PESQUISAR SINAL ' +
       'DICIONÁRIO OU SABER MAIS&QUANTIDADE SOBRE&ASSUNTO VLIBRAS [PONTO]',

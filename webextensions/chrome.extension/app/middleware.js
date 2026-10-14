@@ -1,20 +1,36 @@
 let isLoaded = false;
 
+// Biblionx endpoint configuration (local development default, fallback to production)
+const BIBLIONX_API =
+  (typeof window !== 'undefined' && window.BIBLIONX_API) ||
+  'http://localhost:8000'; // production fallback: https://api.biblionx.org
+
 window.addEventListener('load', () => {
+  const PluginClass =
+    (window.Biblionx && window.Biblionx.Plugin) ||
+    (window.VLibras && window.VLibras.Plugin);
+
+  if (!PluginClass) {
+    console.error('Biblionx/VLibras plugin constructor not found');
+    return;
+  }
+
   window.plugin =
     window.plugin ||
-    new window.VLibras.Plugin({
+    new PluginClass({
       enableMoveWindow: false,
-      personalization: 'https://vlibras.gov.br/config/default_logo.json',
+      personalization: `${BIBLIONX_API}/config/default_logo.json`,
     });
 });
 
 window.addEventListener('message', ({ data }) => {
+  if (typeof data !== 'string' || !data.trim()) return;
   if (!isLoaded) boundTranslate(data);
   else translate(data);
 });
 
 function boundTranslate(text) {
+  if (!window.plugin || !window.plugin.player) return;
   window.plugin.player.on('load', () => {
     const interval = setInterval(() => {
       if (isLoadedControls()) {
@@ -27,6 +43,7 @@ function boundTranslate(text) {
 }
 
 function translate(text) {
+  if (!window.plugin || !window.plugin.player) return;
   window.plugin.player.translate(text);
 }
 

@@ -24,8 +24,7 @@ function loadTextCaptureScript() {
   }
 
   function isValidElement(element) {
-
-    if ($vw.contains(element) || !$guide || $guide.contains(element)) return false;
+    if (($vw && $vw.contains(element)) || ($guide && $guide.contains(element))) return false;
 
     return element.matches('.vw-links') ? false
       : hasTextContent(element)
@@ -65,7 +64,7 @@ function loadTextCaptureScript() {
         else if (isSubmit) return element.value;
         else if (hasTag(element, 'SELECT')) return $(element, `[value="${element.value}"]`).innerText;
         else if (element.innerText) return element.innerText.replace(/\s+/g, ' ');
-        else element.textContent;
+        else return element.textContent;
       } catch { }
     }
 

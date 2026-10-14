@@ -35,18 +35,22 @@ chrome.storage.local.get('popupId', ({ popupId: stored }) => {
   popupId = stored ?? null;
 });
 
-chrome.contextMenus.create(
-  {
-    id: 'translate_contextmenu',
-    title: "Traducir '%s' a Libras",
-    contexts: ['selection'],
-  },
-  () => {
-    if (chrome.runtime.lastError) {
-      console.error(chrome.runtime.lastError.message);
-    }
-  }
-);
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.removeAll(() => {
+    chrome.contextMenus.create(
+      {
+        id: 'translate_contextmenu',
+        title: "Traducir '%s' a Señas (Biblionx)",
+        contexts: ['selection'],
+      },
+      () => {
+        if (chrome.runtime.lastError) {
+          console.error(chrome.runtime.lastError.message);
+        }
+      }
+    );
+  });
+});
 
 chrome.contextMenus.onClicked.addListener(async (info) => {
   if (!info.selectionText) return;
