@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>LAViD</string>
+	<string>Biblionx Project</string>
 	<key>Builder Version</key>
 	<string>11601.5.17.1</string>
 	<key>CFBundleDisplayName</key>
-	<string>VLibras Plugin</string>
+	<string>Biblionx Plugin</string>
 	<key>CFBundleIdentifier</key>
-	<string>br.ufpb.lavid.vlibras</string>
+	<string>com.github.biblionx-project.plugin</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
@@ -34,7 +34,7 @@
 		</dict>
 	</dict>
 	<key>Description</key>
-	<string>Un traductor de portugués a LIBRAS</string>
+	<string>A Spanish to Dominican Sign Language (LSRD) translator</string>
 	<key>DeveloperIdentifier</key>
 	<string>3PTX2S8KDQ</string>
 	<key>ExtensionInfoDictionaryVersion</key>

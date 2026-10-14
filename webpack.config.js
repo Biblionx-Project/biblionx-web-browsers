@@ -10,9 +10,9 @@ const constants = require(`./plugin/constants/${mode}-paths`);
 const webpackConfig = {
   mode: mode === 'development' ? 'development' : 'production',
   output: {
-    filename: 'vlibras-plugin.js',
-    chunkFilename: 'vlibras-plugin.chunk.js',
-    library: 'VLibras',
+    filename: 'biblionx-plugin.js',
+    chunkFilename: 'biblionx-plugin.chunk.js',
+    library: 'Biblionx',
     libraryTarget: 'window',
     publicPath: constants.ROOT_PATH,
   },

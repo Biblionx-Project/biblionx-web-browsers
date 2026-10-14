@@ -40,7 +40,7 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create(
       {
         id: 'translate_contextmenu',
-        title: "Traducir '%s' a Señas (Biblionx)",
+        title: "Traducir '%s' a LSRD (Biblionx)",
         contexts: ['selection'],
       },
       () => {

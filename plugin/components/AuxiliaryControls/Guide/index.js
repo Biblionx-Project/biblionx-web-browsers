@@ -66,7 +66,7 @@ Guide.prototype.show = function () {
   u.removeClass(u.$('div[vp-change-avatar]'), 'vp-isOpen');
   callWidgetTranslator.bind(this)();
 
-  // Dispath custom event to disable text capture
+  // Dispatch custom event to disable text capture
   window.dispatchEvent(new CustomEvent('vp-disable-text-capture'));
 };
 
@@ -84,7 +84,7 @@ Guide.prototype.hide = function () {
   u.removeClass(this.helpButton, 'vp-selected');
   u.setWidgetPosition(this.wPosition);
 
-  // Dispath custom event to disable text capture
+  // Dispatch custom event to enable text capture
   window.dispatchEvent(new CustomEvent('vp-enable-text-capture'));
 };
 
@@ -114,7 +114,7 @@ Guide.prototype.back = function () {
 Guide.prototype.reset = function () {
   this.message.innerHTML = guideElements[0].text.replace('//', '');
   this.backButton.setAttribute('disabled', true);
-  this.nextButton.innerHTML = 'Avançar';
+  this.nextButton.innerHTML = 'Siguiente';
   this.tab = 0;
 };
 
@@ -210,7 +210,7 @@ Guide.prototype.updateFooter = function () {
   const activedTab = u.$('.vp-actived', this.tabSlider);
 
   this.message.innerHTML = guideElements[this.tab].text.replace('//', '');
-  this.nextButton.innerHTML = this.tab === length - 1 ? 'Concluir' : 'Avançar';
+  this.nextButton.innerHTML = this.tab === length - 1 ? 'Finalizar' : 'Siguiente';
 
   // Toggle actived tab in slider
   if (activedTab) u.removeClass(activedTab, 'vp-actived');

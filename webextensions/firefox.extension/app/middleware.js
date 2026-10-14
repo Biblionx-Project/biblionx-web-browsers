@@ -1,17 +1,15 @@
 let isLoaded = false;
 
-// Biblionx endpoint configuration (local development default, fallback to production)
+// Biblionx API base URL: override with window.BIBLIONX_API; defaults to the local development server.
 const BIBLIONX_API =
   (typeof window !== 'undefined' && window.BIBLIONX_API) ||
-  'http://localhost:8000'; // production fallback: https://api.biblionx.org
+  'http://localhost:8000';
 
 window.addEventListener('load', () => {
-  const PluginClass =
-    (window.Biblionx && window.Biblionx.Plugin) ||
-    (window.VLibras && window.VLibras.Plugin);
+  const PluginClass = window.Biblionx && window.Biblionx.Plugin;
 
   if (!PluginClass) {
-    console.error('Biblionx/VLibras plugin constructor not found');
+    console.error('Biblionx plugin constructor not found');
     return;
   }
 

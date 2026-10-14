@@ -12,12 +12,12 @@ safari.application.addEventListener('contextmenu', function(event) {
   }
 
   if (selectedText !== '') {
-    event.contextMenu.appendContextMenuItem('translateLibras', 'Traducir ' + selectedText + ' a LIBRAS');
+    event.contextMenu.appendContextMenuItem('translateLSRD', 'Traducir "' + selectedText + '" a LSRD');
   }
 }, false);
 
 safari.application.addEventListener('command', function(event) {
-  if (event.command === 'translateLibras') {
+  if (event.command === 'translateLSRD') {
     selectedText = event.userInfo;
 
     if (popup === null) {

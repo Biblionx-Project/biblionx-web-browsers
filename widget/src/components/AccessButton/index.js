@@ -32,8 +32,6 @@ AccessButton.prototype.load = function (element, vw) {
 
     window.Biblionx = window.Biblionx || {};
     window.Biblionx.Plugin = Plugin;
-    window.VLibras = window.VLibras || window.Biblionx;
-    window.VLibras.Plugin = Plugin;
 
     const config = {
       enableMoveWindow: true,
@@ -46,7 +44,7 @@ AccessButton.prototype.load = function (element, vw) {
       avatar: this.avatar,
     };
 
-    const PluginConstructor = window.Biblionx?.Plugin || window.VLibras?.Plugin || Plugin;
+    const PluginConstructor = window.Biblionx?.Plugin || Plugin;
     if (!window.plugin) window.plugin = new PluginConstructor(config);
 
     if (this.ready) {

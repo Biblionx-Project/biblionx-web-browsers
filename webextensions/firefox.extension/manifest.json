@@ -1,18 +1,18 @@
 {
   "manifest_version": 2,
-  "name": "Biblionx - Traductor de Lengua de Señas Dominicana (LSRD)",
+  "name": "Biblionx - Traductor a Lengua de Señas Dominicana (LSRD)",
   "version": "6.0.1",
-  "description": "Traductor web a Lengua de Señas Dominicana (LSRD) - Biblionx",
-  "homepage_url": "https://github.com/biblionx",
+  "description": "Traduce el texto seleccionado en la web del español a la Lengua de Señas Dominicana (LSRD). Un proyecto de Biblionx.",
+  "homepage_url": "https://github.com/Biblionx-Project",
   "browser_specific_settings": {
     "gecko": {
       "id": "extension@biblionx.org"
     }
   },
   "icons": {
-    "16": "icons/vlibras16.png",
-    "48": "icons/vlibras48.png",
-    "128": "icons/vlibras128.png"
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "permissions": ["contextMenus", "storage", "tabs"],
   "background": {

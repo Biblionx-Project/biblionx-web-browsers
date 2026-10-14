@@ -5,7 +5,7 @@ export const guideElements = [
     buscar señas en el Diccionario o saber más sobre Biblionx.`,
     gloss:
       'CLIQUE BOTÃO CABEÇALHO ACESSAR CONFIGURAÇÃO PESQUISAR SINAL ' +
-      'DICIONÁRIO OU SABER MAIS&QUANTIDADE SOBRE&ASSUNTO VLIBRAS [PONTO]',
+      'DICIONÁRIO OU SABER MAIS&QUANTIDADE SOBRE&ASSUNTO BIBLIONX [PONTO]',
   },
   {
     path: 'div[vp-change-avatar]',
@@ -20,8 +20,8 @@ export const guideElements = [
     text: `Accede a opciones extras de la herramienta.
     Haz clic en este botón para acceder al Traductor o cambiar la emoción del avatar.`,
     gloss:
-      'ACESSAR OPÇÃO EXTRA VLIBRAS ' +
-      'CLIQUE BOTÃO ACESSAR TRADUTOR VLIBRAS ALTERAR EMOÇÃO AVATAR [PONTO]',
+      'ACESSAR OPÇÃO EXTRA BIBLIONX ' +
+      'CLIQUE BOTÃO ACESSAR TRADUTOR BIBLIONX ALTERAR EMOÇÃO AVATAR [PONTO]',
   },
   {
     path: 'div[vp-controls]',

@@ -70,7 +70,7 @@ function loadTextCaptureScript() {
 
     const textContent = getTextContent();
 
-    // Call VLibras Widget
+    // Send the captured text to the Biblionx plugin for LSRD translation
     if (textContent && textContent.trim()) window.plugin.translate(textContent);
 
     const linkElement = element.tagName === "A" ? element : hasLinkAncestor(element);
@@ -95,7 +95,7 @@ function loadTextCaptureScript() {
     if (!linkElement) return;
     removeTooltips();
     const tooltip = $('.vw-links');
-    tooltip.innerText = linkElement.tagName === 'A' ? "Acessar link" : 'Interagir';
+    tooltip.innerText = linkElement.tagName === 'A' ? "Open link" : 'Interact';
 
     const { clientX, clientY } = event;
     const yView = clientY > innerHeight - 100;

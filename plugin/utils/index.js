@@ -24,7 +24,7 @@ export const formatGloss = gloss => {
 }
 
 // Get a valid Widget element
-// * www.correios.com.br
+// (the plugin root [vp] is nested inside the widget root [vw] on host pages)
 export const getWidget = () => {
   return $('[vp]').closest('[vw]');
 }

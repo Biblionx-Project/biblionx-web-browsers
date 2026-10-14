@@ -5,8 +5,12 @@ safari.self.addEventListener('message', function(request) {
     return;
   }
 
+  const PluginClass = window.Biblionx && window.Biblionx.Plugin;
+
+  if (!PluginClass) return;
+
   window.plugin =
-    window.plugin || new window.VLibras.Plugin({enableMoveWindow: false});
+    window.plugin || new PluginClass({enableMoveWindow: false});
   window.plugin.translate(request.message);
 });
 

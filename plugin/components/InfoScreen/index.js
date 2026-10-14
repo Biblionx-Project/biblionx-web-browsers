@@ -26,10 +26,6 @@ InfoScreen.prototype.load = function (element) {
   // ADD ICONS
   backButton.innerHTML = backIcon;
   social[0].innerHTML = socialIcons.website;
-  social[1].innerHTML = socialIcons.face;
-  social[2].innerHTML = socialIcons.insta;
-  social[3].innerHTML = socialIcons.twitter;
-  social[4].innerHTML = socialIcons.youtube;
 
   backButton.onclick = () => this.hide();
 };

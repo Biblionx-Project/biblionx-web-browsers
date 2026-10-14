@@ -1,191 +1,208 @@
 <div align="center">
-# Biblionx Web (Plugins and Widget)
 
-*Adapted from [VLibras](https://www.vlibras.gov.br/) Web — browser extensions and widget for web pages.*
+# Biblionx Web Browsers (Plugins and Widget)
+
+*Browser extensions and an embeddable web widget that translate written Spanish into Dominican Sign Language (LSRD) with a 3D signing avatar.*
 
 ![Version](https://img.shields.io/badge/version-v6.0.0-blue.svg)
-![Platform](https://img.shields.io/badge/platform-chrome%20%7C%20firefox%20%7C%20safari-lightgrey)
+![Platform](https://img.shields.io/badge/platform-chrome%20%7C%20firefox-lightgrey)
 ![License](https://img.shields.io/badge/license-LGPLv3-blue.svg)
 
 </div>
 
-> **Note — Biblionx-Project:** this repository is an adaptation of [VLibras](https://www.vlibras.gov.br/) kept as an architecture reference for the Biblionx thesis project (Dominican Sign Language, LSRD, text translator). The project's active, functional component is [`biblionx-lsrd-translator`](https://github.com/Biblionx-Project/biblionx-lsrd-translator); this repo is kept as a historical reference of the original VLibras ecosystem, not as an active dependency of the final product. See the [Biblionx-Project](https://github.com/Biblionx-Project) organization.
+Biblionx is a UNICDA thesis project (Trabajo de Grado) that translates written Spanish (Dominican Republic) into **Dominican Sign Language (LSRD, Lengua de Señas Dominicana)**. This repository holds the browser-side front end of the Biblionx architecture:
+
+- **Widget** - a script that website owners embed in their pages. It adds a floating accessibility button; visitors select text and the avatar signs it in LSRD.
+- **Plugins** - Chrome (Manifest V3) and Firefox (Manifest V2) extensions that add a context-menu entry to translate selected text on any page in a popup player window.
+
+Both targets share the same UI code (`plugin/`) and embed the sign player from [`biblionx-player-webjs`](https://github.com/Biblionx-Project/biblionx-player-webjs).
+
+> **Status:** this repository is a Biblionx architecture reference component. The active, functional product is [`biblionx-lsrd-translator`](https://github.com/Biblionx-Project/biblionx-lsrd-translator). See the [Biblionx-Project](https://github.com/Biblionx-Project) organization for the other components.
 
 ## Table of Contents
 
+- [Repository Layout](#repository-layout)
 - [Getting Started](#getting-started)
-  - [System Requirements](#system-requirements)
   - [Prerequisites](#prerequisites)
+  - [Configuration](#configuration)
   - [Installation](#installation)
 - [Build](#build)
   - [Building the Widget](#building-the-widget)
   - [Building the Plugins](#building-the-plugins)
-- [Production Installation / Usage](#production-installation--usage)
-  - [Installing the Widget](#installing-the-widget)
-  - [Installing the Plugins](#installing-the-plugins)
-- [Dependency Modernization (Past Iteration)](#dependency-modernization-past-iteration)
-- [Contributors](#contributors)
-- [License](#license)
+  - [Local Development Server](#local-development-server)
+- [Usage](#usage)
+  - [Embedding the Widget](#embedding-the-widget)
+  - [Widget Options](#widget-options)
+  - [Loading the Plugins](#loading-the-plugins)
+- [Origins](#origins)
+
+## Repository Layout
+
+| Path | Contents |
+| ---- | -------- |
+| `plugin/` | Shared UI: `Plugin.js` (player wrapper), components (dictionary, settings, suggestion and info screens), SCSS, icons, fonts and the per-mode endpoint constants in `plugin/constants/`. Entry point for the extensions: `plugin/index.js`. |
+| `widget/` | Widget entry point (`widget/src/index.js`, `Widget.js`), widget-only components and styles, a demo page (`widget/index.html`) and a small static server (`widget/server.js`). Build output goes to `widget/app/`. |
+| `webextensions/chrome.extension/` | Chrome extension (Manifest V3, service worker, context menu). Build output goes to `app/player/`. |
+| `webextensions/firefox.extension/` | Firefox extension (Manifest V2, background script, context menu). Build output goes to `app/player/`. |
+| `safari.safariextension/` | Legacy Safari extension sources. Not wired into the gulp build and not maintained. |
+| `gulpfile.js` | Build tasks (`build:widget`, `build:chrome`, `build:firefox`, `build:webextensions`, `build`, `run:widget`). |
+| `webpack.config.js` | Bundles `plugin/index.js` or `widget/src/index.js` into a single script exposed on `window`. |
 
 ## Getting Started
 
-These instructions will get you a copy of the project built and running on your local machine for development and testing purposes.
-
-### System Requirements
-
-* OS: Ubuntu 26.04 LTS or later, or compatible Windows/macOS systems.
-
 ### Prerequisites
 
-Before starting the build process, you need to install a few prerequisites:
-
-[Node.js](https://nodejs.org/en/)
-
-On Debian/Ubuntu-based systems:
-
-```sh
-curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
-```
-
-```sh
-sudo apt install -y nodejs
-```
-<br/>
-
-[Biblionx Player WebJS](https://github.com/Biblionx-Project/biblionx-player-webjs)
-
-Biblionx Player WebJS is required during the installation of the project; you just need to clone it into the same path as this project's root.
+- [Node.js](https://nodejs.org/en/) 22 LTS or later with npm. Several current dev dependencies (for example `sass-loader` 17 and `cross-env` 10) require a recent Node.js; the `.nvmrc` pin is outdated.
+- [Biblionx Player WebJS](https://github.com/Biblionx-Project/biblionx-player-webjs), cloned as a **sibling directory** of this repository. `package.json` installs it from `file:../biblionx-player-webjs`, and the build copies its prebuilt Unity player from `src/target/`.
 
 ```sh
 git clone https://github.com/Biblionx-Project/biblionx-player-webjs.git
+git clone https://github.com/Biblionx-Project/biblionx-web-browsers.git
 ```
 
-> Note: You need access to the Biblionx Player WebJS repository in order to clone it.
+Resulting layout:
+
+```
+.
+├── biblionx-player-webjs/
+└── biblionx-web-browsers/
+```
 
 ### Configuration
 
-Before running the application, make sure to create a `.env` file at the project root and define the following environment variable:
+The build mode selects which endpoint file in `plugin/constants/` is bundled (`development-paths.js`, `homolog-paths.js` or `production-paths.js`). Copy `.env.example` to `.env` and set the mode:
 
 ```dotenv
-# .env content (set to "production", "homolog", or "development")
+# production | homolog | development
 BIBLIONX_MODE=development
 MODE=development
 ```
 
+`BIBLIONX_MODE` takes precedence over `MODE`; if neither is set, `production` is used. The `npm run build`, `build-debug`, `test` and `test-prod` scripts set `MODE` themselves through `cross-env`.
+
+Each constants file defines:
+
+| Constant | Purpose |
+| -------- | ------- |
+| `ROOT_PATH` | Public path the bundle loads its assets and player from (also the widget's default `rootPath`). |
+| `DICTIONARY_URL` | LSRD dictionary word list endpoint. |
+| `REVIEW_URL` | Translation review/suggestion endpoint. |
+| `SIGNS_URL` | Base URL for sign images. |
+
+Development and homolog modes point to a local backend at `http://localhost:8000`. Each value can be overridden by an environment variable of the same name at build time, or by editing the constants file.
+
 ### Installation
 
-After installing all the prerequisites, install the project's dependencies by running the command:
-
-```bash
-cd biblionx-web-browsers/
-```
-
 ```sh
+cd biblionx-web-browsers
 npm install
 ```
 
 ## Build
 
-Once the installation is complete, you can proceed to build the Plugins and the Widget.
-
 ### Building the Widget
+
+Make sure `$is-widget` is set to `1` in `plugin/scss/_variables.scss` (the default):
+
+```scss
+$is-widget: 1;
+```
+
+Then run:
 
 ```sh
 npm run gulp build:widget
 ```
 
-The compiled file can be found in the `widget/app/` folder. See the [Widget installation section](#installing-the-widget) for installation instructions.
+The widget bundle, `index.html`, assets, fonts and the player (`target/`) are written to `widget/app/`.
 
 ### Building the Plugins
 
-Before building, you must set `$is-widget` to `0` in `plugin/scss/_variables.scss`:
+Before building the extensions, set `$is-widget` to `0` in `plugin/scss/_variables.scss`:
 
 ```scss
 $is-widget: 0;
 ```
 
-To build the plugin, you have two different options depending on the target browser:
-
-- Firefox/Chrome - the compiled files can be found in the `webextensions` folder.
+Then build both browser extensions:
 
 ```sh
 npm run gulp build:webextensions
 ```
 
-- Safari - the compiled files can be found in the `safari.safariextension` folder.
+or a single one with `npm run gulp build:chrome` / `npm run gulp build:firefox`. Output is written to `webextensions/<browser>.extension/app/player/`.
+
+`npm run build` (production) and `npm run build-debug` (development) build the extensions and the widget in one pass. Because both targets share the same `$is-widget` setting, build the widget and the plugins separately when you need correct styles for each.
+
+### Local Development Server
 
 ```sh
-npm run gulp build:safari
+npm test         # development mode
+npm run test-prod  # production mode
 ```
 
-> Note: You can also generate all builds for all targets at once by running: `npm run gulp build`
+This runs the `run:widget` gulp task: it rebuilds the widget whenever files under `plugin/`, `widget/src/` or `widget/assets/` change and serves `widget/app/` with `widget/server.js` at `http://localhost:8080`.
 
-## Production Installation / Usage
+To lint the code base (with automatic fixes):
 
-### Installing the Widget
+```sh
+npm run lint
+```
 
-The Widget can be installed on your website by inserting a few code snippets before closing the `<body>` tag of an HTML page:
+## Usage
+
+### Embedding the Widget
+
+Copy the built `widget/app/` folder to your web server and add the following markup before the closing `</body>` tag of your page.
 
 ```html
-<body> <!-- Start of page body -->
-
-  ... <!-- Page content -->
-
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
   </div>
-  <script src="<your-directory-path>/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget();
-  </script>
-</body> <!-- End of page body -->
+</div>
+<script src="<path-to>/app/biblionx-plugin.js"></script>
+<script>
+  new window.Biblionx.Widget({ rootPath: '<path-to>/app' });
+</script>
 ```
 
-> Note: The `app` folder can be copied to any directory; remember to enter the correct path to it.
+`widget/index.html` is a complete working example page.
 
-#### Default Values Configuration
+### Widget Options
 
-When using the Widget, you can customize several aspects such as opacity, position, and the initial avatar. The available parameters are listed below:
+`new window.Biblionx.Widget(options)` accepts:
 
-| Parameter         | Default Value                    | Description  |
-| ----------------- | -------------------------------- | ------------ |
-| `rootPath`        | `"https://vlibras.gov.br/app/"`  | The base path for the resources used by the Widget. Can be configured to point to a specific directory. In development, use your local path. |
-| `personalization` | `null`                           | Specifies a valid JSON URL for custom avatar configurations. |
-| `opacity`         | `1`                              | Controls the Widget's background opacity. A value between 0 (fully transparent) and 1 (fully opaque). |
-| `position`        | `"R"`                            | Sets the Widget's initial position on the page. Valid values are: "TL" (top-left), "T" (top), "TR" (top-right), "R" (right), "BR" (bottom-right), "B" (bottom), "BL" (bottom-left), and "L" (left). |
-| `avatar`          | `"icaro"`                        | Defines the initial VLibras avatar. Available avatars are: "icaro", "hosana", and "guga". You can also use "random". |
+| Option | Default | Description |
+| ------ | ------- | ----------- |
+| `rootPath` | `ROOT_PATH` of the build mode | Base path of the `app/` folder (bundle, assets and `target/` player). A trailing `/` is added if missing. |
+| `personalization` | `undefined` | URL of a JSON file with avatar/logo personalization settings. |
+| `opacity` | `1` | Widget background opacity, from `0` (transparent) to `1` (opaque). |
+| `position` | `"R"` | Initial position: `"TL"`, `"T"`, `"TR"`, `"L"`, `"R"`, `"BL"`, `"B"` or `"BR"`. |
+| `avatar` | `"icaro"` | Initial avatar: `"icaro"`, `"hosana"`, `"guga"` or `"random"`. |
 
-Usage example:
+Example:
 
 ```javascript
-new window.VLibras.Widget({
-  rootPath: "/app",
-  personalization: 'https://vlibras.gov.br/config/configs.json',
+new window.Biblionx.Widget({
+  rootPath: '/app',
+  personalization: 'http://localhost:8000/config/default_logo.json',
   opacity: 0.75,
   position: 'L',
-  avatar: 'random'
+  avatar: 'random',
 });
 ```
 
-### Installing the Plugins
+### Loading the Plugins
 
-VLibras already has official plugin versions in the Chrome and Firefox extension stores.
-To use the version of the plugins built on your machine, see the extension installation instructions on your browser's official page.
+The extensions are not published to any browser store; load the local build instead:
 
-## Dependency Modernization
+- **Chrome:** open `chrome://extensions`, enable *Developer mode*, choose *Load unpacked* and select `webextensions/chrome.extension/`.
+- **Firefox:** open `about:debugging#/runtime/this-firefox`, choose *Load Temporary Add-on* and select `webextensions/firefox.extension/manifest.json`.
 
-In the latest iteration, the project went through a modernization process to align with current development standards:
-- **SASS Migration**: The deprecated `node-sass` package was replaced with the modern official implementation `sass` (Dart Sass), improving compatibility and stability when compiling styles.
-- **Cross-Platform Support**: `cross-env` was integrated into the `npm` run scripts to ensure environment variables (such as `MODE`) are correctly set on both Unix and Windows systems.
-- **Dependency Updates**: Key packages were updated, including `nouislider` (from v8 to v15.8.1), `trie-search` (from v1 to v2.2.1), `webpack` to v5.97.1, and the corresponding style/sass loaders.
+Select text on any page, right-click and choose **Traducir '...' a LSRD (Biblionx)** to open the LSRD player popup.
 
-## Contributors & Attribution
+## Origins
 
-Originally developed by the VLibras team (Laboratório de Aplicações de Vídeo Digital - LAVID / UFPB and Brazilian Ministry of Planning/Management). Adapted, modernized, and maintained as an architectural reference for Dominican Sign Language (LSRD) by the Biblionx team (UNICDA thesis project).
-
-## License
-
-This project is licensed under the LGPLv3 License - see the [LICENSE](LICENSE) file for details. Derived from the open-source VLibras project, maintaining full compliance with the GNU Lesser General Public License v3.0.
+This project was initially forked from the open-source VLibras project. It has since evolved enough to stand as an independent project of its own. Licensed under LGPLv3 — see [LICENSE](LICENSE).

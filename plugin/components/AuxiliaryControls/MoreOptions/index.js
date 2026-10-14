@@ -56,7 +56,7 @@ MoreOptions.prototype.load = function (element) {
 
   otherResourcesBtn.addEventListener('click', () => {
     this.hide();
-    window?.VLibrasWidgetPlus?.open();
+    window?.BiblionxWidgetPlus?.open();
     window.dispatchEvent(
       new CustomEvent('vp-widget-close', { detail: { close: true } })
     );

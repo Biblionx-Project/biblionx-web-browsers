@@ -1,4 +1,4 @@
-const VLibras = require('vlibras');
+const BiblionxPlayer = require('vlibras');
 
 const Settings = require('components/Settings');
 const SettingsBtn = require('components/SettingsBtn');
@@ -28,7 +28,7 @@ require('./scss/styles.scss');
 require('./scss/text-capture.scss');
 
 function Plugin(options) {
-  this.player = new VLibras.Player({
+  this.player = new BiblionxPlayer.Player({
     // onLoad: options.playWellcome && (() => this.player.playWellcome()),
     targetPath: options.rootPath ? url(options.rootPath, '/target') : 'target',
     personalization: options.personalization,
